@@ -20,11 +20,11 @@ function App() {
     <>
       <div>
       {parks.data.map((park) => {
-        // console.log(park.fullName)
+        // console.log(park.activities[1].name)
   
           return (
-            <div>
-              <h1 key={park.id}>{park.fullName}</h1>
+            <div key={park.id}>
+              <h1>{park.fullName}</h1>
               <p>{park.description}</p>
            </div>
           )
