@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import { useState, useEffect } from "react";
+import axios from "axios";
 import './App.css';
 
+const baseURL = "https://developer.nps.gov/api/v1/parks?limit=50&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN";
+
 function App() {
+  const [parks, setparks] = useState(null);
+
+  useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      // console.log(response.data)
+      setparks(response.data);
+    });
+  }, []);
+
+  if (!parks) return null;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>
+      {parks.data.map((park) => {
+        // console.log(park.fullName)
+  
+          return (
+            <div>
+              <h1 key={park.id}>{park.fullName}</h1>
+              <p>{park.description}</p>
+           </div>
+          )
+        
+        
+      })}
+      </div>
+    </>
   );
 }
 
