@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
+import JumboTron from "./components/JumboTron";
 import StateParksGrid from "./components/StateParksGrid";
 import axios from "axios";
 import './App.css';
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
       <NavBar />
+      <JumboTron />
       <StateParksGrid parks={parks}/>
     </>
   );
