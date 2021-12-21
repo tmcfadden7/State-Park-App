@@ -5,7 +5,7 @@ import StateParksGrid from "./components/StateParksGrid";
 import axios from "axios";
 import './App.css';
 
-const baseURL = "https://developer.nps.gov/api/v1/parks?limit=50&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN";
+const baseURL = "https://developer.nps.gov/api/v1/parks?limit=10&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN";
 
 function App() {
   const [parks, setparks] = useState(null);
