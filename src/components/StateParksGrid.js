@@ -1,13 +1,11 @@
-import React from 'react'
+import StateParks from "./StateParks"
 
-const StateParksGrid = () => {
+const StateParksGrid = ({ parks }) => {
     return (
         <>
             <div className="container">
-                <div className="row">
-                    <div className="col-4">
-                        
-                    </div>
+                <div className="row"> 
+                  <StateParks parks={parks} />
                 </div>
             </div>
         </>

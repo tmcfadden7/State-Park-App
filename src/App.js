@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
+import StateParksGrid from "./components/StateParksGrid";
 import axios from "axios";
 import './App.css';
 
@@ -14,26 +15,13 @@ function App() {
       setparks(response.data);
     });
   }, []);
-
+  console.log(parks);
   if (!parks) return null;
 
   return (
     <>
       <NavBar />
-      <div>
-      {parks.data.map((park) => {
-        // console.log(park.activities[1].name)
-  
-          return (
-            <div key={park.id}>
-              <h1>{park.fullName}</h1>
-              <p>{park.description}</p>
-           </div>
-          )
-        
-        
-      })}
-      </div>
+      <StateParksGrid parks={parks}/>
     </>
   );
 }
