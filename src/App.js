@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import NavBar from "./components/NavBar";
 import axios from "axios";
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <>
+      <NavBar />
       <div>
       {parks.data.map((park) => {
         // console.log(park.activities[1].name)
