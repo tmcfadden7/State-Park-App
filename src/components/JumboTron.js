@@ -3,7 +3,7 @@ import JumboImage from '../../src/images/Ohio-Hocking-Hills-state-park.jpeg'
 const JumboTron = () => {
     return (
         <>
-            <div className="jumbotron py-3">
+            <div className="jumbotron pt-3 mb-0">
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-lg-8">
