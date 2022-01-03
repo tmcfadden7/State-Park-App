@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import JumboTron from "./components/JumboTron";
+import Carousel from "./components/Carousel";
 import StateParksGrid from "./components/StateParksGrid";
 import axios from "axios";
 import './App.css';
@@ -22,7 +23,8 @@ function App() {
   return (
     <>
       <NavBar />
-      <JumboTron />
+      <JumboTron parks={parks}/>
+      <Carousel parks={parks}/>
       <StateParksGrid parks={parks}/>
     </>
   );

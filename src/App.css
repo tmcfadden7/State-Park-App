@@ -2,6 +2,15 @@
   background-color: #E39A37 !important;
 }
 
-.jumbotron {
+.jumbo-1 {
   background-image: linear-gradient(#E39A37 , #342B10, #655338);
+  border-radius: 0;
+}
+.jumbo-2 {
+  background-image: linear-gradient(#655338, #fff );
+  border-radius: 0;
+}
+
+.activity {
+  font-size: 12px;
 }
