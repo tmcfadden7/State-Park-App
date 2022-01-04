@@ -24,8 +24,9 @@ function App() {
     <>
       <NavBar />
       <JumboTron parks={parks}/>
-      <Carousel parks={parks}/>
       <StateParksGrid parks={parks}/>
+      <Carousel parks={parks}/>
+      
     </>
   );
 }

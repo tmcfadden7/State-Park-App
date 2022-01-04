@@ -1,16 +1,34 @@
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 .navbar {
   background-color: #E39A37 !important;
 }
 
 .jumbo-1 {
-  background-image: linear-gradient(#E39A37 , #342B10, #655338);
+  background-image: url('/src/images/Ohio-Hocking-Hills-state-park.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-image: linear-gradient(#E39A37 , #342B10, #655338); */
   border-radius: 0;
+  width: 100%;
+  min-height: 700px;
 }
-.jumbo-2 {
+/* .jumbo-2 {
   background-image: linear-gradient(#655338, #fff );
   border-radius: 0;
-}
+} */
 
 .activity {
   font-size: 12px;
+}
+.carosel-max-height {
+  max-height: 600px;
+}
+.custom-caption {
+  padding: 10px;
+  bottom: auto;
+  top: 20px;
+  background: rgba(00, 00, 00, 0.3);
 }
