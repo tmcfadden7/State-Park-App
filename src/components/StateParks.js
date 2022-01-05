@@ -7,7 +7,7 @@ const StateParks = ({ parks }) => {
         // console.log(park.id)
           return (
             <>
-            <div className="col-sm-4 mb-5" key={park.id}>
+            <div className="col-lg-4 mb-5" key={park.id}>
               <img className="img-thumbnail" src={park.images[0].url} alt={park.fullName} />
               <h2>{park.fullName}</h2>
               <p>{park.addresses[0].line1}, <br/>
