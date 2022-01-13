@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import JumboTron from "./components/JumboTron";
 import Carousel from "./components/Carousel";
 import StateParksGrid from "./components/StateParksGrid";
+import ActivitiesGrid from "./components/ActivitiesGrid";
 import Search from "./components/Search";
 import axios from "axios";
 import './App.css';
@@ -21,7 +22,8 @@ function App() {
       setActivities(response.data);
     });
   }, []);
-  console.log(activities.data);
+  // console.log(activities.data);
+  
   useEffect(() => {
     const baseURL = `https://developer.nps.gov/api/v1/parks?limit=3&q=${parkQuery}&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
 
@@ -32,7 +34,7 @@ function App() {
   }, [parkQuery]);
   // console.log(parks);
   if (!parks) return null;
-
+  if (!activities) return null;
   return (
     <>
       <NavBar />
@@ -40,7 +42,7 @@ function App() {
       <Search parkQuery={(q) => setParkQuery(q)} /> 
       <StateParksGrid parks={parks}/>
       <Carousel parks={parks}/>
-      
+      <ActivitiesGrid activities={activities} />
     </>
   );
 }

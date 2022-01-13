@@ -20,7 +20,7 @@ const StateParks = ({ parks }) => {
               </button>
 
               {/* Modal */}
-              <div className="modal fade" id={`activityModal${park.id}`} tabindex="-1" aria-hidden="true">
+              <div className="modal fade" id={`activityModal${park.id}`} tabIndex="-1" aria-hidden="true">
                 <div className="modal-dialog">
                   <div className="modal-content">
                     <div className="modal-header">
