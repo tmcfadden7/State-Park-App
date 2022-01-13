@@ -12,7 +12,16 @@ import './App.css';
 function App() {
   const [parks, setparks] = useState(null);
   const [parkQuery, setParkQuery] = useState('a');
+  const [activities, setActivities] = useState('')
 
+  useEffect(() => {
+    const activityUrl = `https://developer.nps.gov/api/v1/activities/parks?limit=50&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
+
+    axios.get(activityUrl).then((response) => {
+      setActivities(response.data);
+    });
+  }, []);
+  console.log(activities.data);
   useEffect(() => {
     const baseURL = `https://developer.nps.gov/api/v1/parks?limit=3&q=${parkQuery}&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
 
@@ -21,7 +30,7 @@ function App() {
       setparks(response.data);
     });
   }, [parkQuery]);
-  console.log(parks);
+  // console.log(parks);
   if (!parks) return null;
 
   return (
