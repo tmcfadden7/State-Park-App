@@ -6,6 +6,7 @@ import Carousel from "./components/Carousel";
 import StateParksGrid from "./components/StateParksGrid";
 import ActivitiesGrid from "./components/ActivitiesGrid";
 import Search from "./components/Search";
+import ErrorPage from "./components/ErrorPage";
 import axios from "axios";
 import './App.css';
 import ParkDetails from "./components/ParkDetails";
@@ -50,13 +51,13 @@ function App() {
       <NavBar />
         <Routes>
           <Route path ='/' element={<>
-          
           <JumboTron parks={parks}/>
           <Search parkQuery={(q) => setParkQuery(q)} /> 
           <StateParksGrid parks={parks}/>
           <Carousel parks={parks}/>
           <ActivitiesGrid activities={activities} /></>} />
           <Route path='/park-details' element={ <ParkDetails /> } />
+          <Route path='*' element={<ErrorPage />} />
         </Routes>
       </Router>
     </>
