@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import NavBar from "./components/NavBar";
 import JumboTron from "./components/JumboTron";
 import Carousel from "./components/Carousel";
@@ -7,6 +8,7 @@ import ActivitiesGrid from "./components/ActivitiesGrid";
 import Search from "./components/Search";
 import axios from "axios";
 import './App.css';
+import ParkDetails from "./components/ParkDetails";
 
 
 
@@ -37,12 +39,26 @@ function App() {
   if (!activities) return null;
   return (
     <>
+     
+          {/* <NavBar />
+          <JumboTron parks={parks}/>
+          <Search parkQuery={(q) => setParkQuery(q)} /> 
+          <StateParksGrid parks={parks}/>
+          <Carousel parks={parks}/>
+          <ActivitiesGrid activities={activities} /> */}
+      <Router>
       <NavBar />
-      <JumboTron parks={parks}/>
-      <Search parkQuery={(q) => setParkQuery(q)} /> 
-      <StateParksGrid parks={parks}/>
-      <Carousel parks={parks}/>
-      <ActivitiesGrid activities={activities} />
+        <Routes>
+          <Route path ='/' element={<>
+          
+          <JumboTron parks={parks}/>
+          <Search parkQuery={(q) => setParkQuery(q)} /> 
+          <StateParksGrid parks={parks}/>
+          <Carousel parks={parks}/>
+          <ActivitiesGrid activities={activities} /></>} />
+          <Route path='/park-details' element={ <ParkDetails /> } />
+        </Routes>
+      </Router>
     </>
   );
 }

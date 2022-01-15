@@ -12,7 +12,7 @@ const Search = ({parkQuery}) => {
         <section id='parks'>
             <div className='container pt-5'>
                 <h2 className="text-center">Search by Park</h2>
-                <input className="form-control" type="text" placeholder="Default input" 
+                <input className="form-control" type="text" placeholder="Search" 
                 onChange={(e) => onChange(e.target.value)} value={text}/>
             </div>
         </section>
