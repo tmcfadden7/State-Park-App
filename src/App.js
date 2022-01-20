@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import NavBar from "./components/NavBar";
+import ParkDetails from "./components/ParkDetails";
 import JumboTron from "./components/JumboTron";
 import Carousel from "./components/Carousel";
 import StateParksGrid from "./components/StateParksGrid";
@@ -9,7 +10,6 @@ import Search from "./components/Search";
 import ErrorPage from "./components/ErrorPage";
 import axios from "axios";
 import './App.css';
-import ParkDetails from "./components/ParkDetails";
 
 
 
@@ -28,7 +28,7 @@ function App() {
   // console.log(activities.data);
   
   useEffect(() => {
-    const baseURL = `https://developer.nps.gov/api/v1/parks?limit=3&q=${parkQuery}&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
+    const baseURL = `https://developer.nps.gov/api/v1/parks?limit=3&q=${parkQuery ? parkQuery : 'a'}&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
 
     axios.get(baseURL).then((response) => {
       // console.log(response.data)
@@ -47,19 +47,22 @@ function App() {
           <StateParksGrid parks={parks}/>
           <Carousel parks={parks}/>
           <ActivitiesGrid activities={activities} /> */}
-      <Router>
-      <NavBar />
-        <Routes>
-          <Route path ='/' element={<>
-          <JumboTron parks={parks}/>
-          <Search parkQuery={(q) => setParkQuery(q)} /> 
-          <StateParksGrid parks={parks}/>
-          <Carousel parks={parks}/>
-          <ActivitiesGrid activities={activities} /></>} />
-          <Route path='/park-details' element={ <ParkDetails /> } />
-          <Route path='*' element={<ErrorPage />} />
-        </Routes>
-      </Router>
+     <Router>
+        <NavBar /> 
+            <Routes>
+              
+              <Route exact path='/' element={
+                <>
+                <JumboTron parks={parks}/>
+                <Search parkQuery={(q) => setParkQuery(q)} />
+                <StateParksGrid parks={parks} />
+                <Carousel parks={parks} />
+                <ActivitiesGrid activities={activities} />
+              </>
+              }/>
+              <Route path='/:id' element={<ParkDetails parks={parks}/>} />
+            </Routes>
+        </Router>
     </>
   );
 }

@@ -6,7 +6,7 @@ const StateParksGrid = ({ parks }) => {
             <section>
                 <div className="container py-5">
                     <div className="row"> 
-                    <StateParks parks={parks} />
+                        <StateParks parks={parks} />
                     </div>
                 </div>
             </section>
