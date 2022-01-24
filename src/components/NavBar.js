@@ -16,7 +16,7 @@ const NavBar = () => {
                                 <a className="nav-link" href="#parks">Parks <span className="sr-only">(current)</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Activities</a>
+                                <a className="nav-link" href="#activity">Activities</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Locations</a>

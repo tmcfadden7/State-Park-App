@@ -8,17 +8,21 @@ body {
 
 .jumbo-1 {
   background-image: url('/src/images/Ohio-Hocking-Hills-state-park.jpeg');
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-image: linear-gradient(#E39A37 , #342B10, #655338); */
+
+
+  /* background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 0;
   width: 100%;
-  min-height: 700px;
+  min-height: 700px; */
 }
-/* .jumbo-2 {
-  background-image: linear-gradient(#655338, #fff );
-  border-radius: 0;
-} */
 
 .activity {
   font-size: 12px;

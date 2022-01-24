@@ -1,16 +1,9 @@
-
-
-
-
-const JumboTron = ({ parks }) => {
-   
-    
+const JumboTron = ({ parks }) => { 
     return (
         <>
             <div className="jumbo-1">
                 
-            </div>
-            
+            </div>         
         </>
     )
 }

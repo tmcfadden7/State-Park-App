@@ -40,25 +40,17 @@ function App() {
   if (!activities) return null;
   return (
     <>
-     
-          {/* <NavBar />
-          <JumboTron parks={parks}/>
-          <Search parkQuery={(q) => setParkQuery(q)} /> 
-          <StateParksGrid parks={parks}/>
-          <Carousel parks={parks}/>
-          <ActivitiesGrid activities={activities} /> */}
      <Router>
         <NavBar /> 
             <Routes>
-              
               <Route exact path='/' element={
                 <>
-                <JumboTron parks={parks}/>
-                <Search parkQuery={(q) => setParkQuery(q)} />
-                <StateParksGrid parks={parks} />
-                <Carousel parks={parks} />
-                <ActivitiesGrid activities={activities} />
-              </>
+                  <JumboTron parks={parks}/>
+                  <Search parkQuery={(q) => setParkQuery(q)} />
+                  <StateParksGrid parks={parks} />
+                  <Carousel parks={parks} />
+                  <ActivitiesGrid activities={activities} />
+                </>
               }/>
               <Route path='/:id' element={<ParkDetails parks={parks}/>} />
             </Routes>
