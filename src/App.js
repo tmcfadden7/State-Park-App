@@ -7,7 +7,6 @@ import Carousel from "./components/Carousel";
 import StateParksGrid from "./components/StateParksGrid";
 import ActivitiesGrid from "./components/ActivitiesGrid";
 import Search from "./components/Search";
-import ErrorPage from "./components/ErrorPage";
 import axios from "axios";
 import './App.css';
 

@@ -62,6 +62,10 @@ const ParkDetails = ({parks}) => {
                                     </div>
                                 </>
                             )
+                        } else {
+                            return (
+                                <h3>No Park Data</h3>
+                            )
                         }
                         
                     })}
