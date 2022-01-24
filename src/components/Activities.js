@@ -21,15 +21,17 @@ const Activities = ({ activities }) => {
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
+                                <div className="modal-body">
+                                <ul className='list-group list-group-flush'>
                                 {activity.parks.map((todo) => {
                                     return (
-                                        <>
-                                        <div className="modal-body" key={todo.parkCode}>
-                                            {todo.fullName}, {todo.states}
-                                        </div>    
-                                        </>
+                                        
+                                        <li key={todo.parkCode} className='activity list-group-item'>{todo.fullName}, {todo.states}</li>
+                                        
                                     )
                                 })}
+                                </ul>
+                                </div> 
                                     <div className="modal-footer">
                                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
