@@ -9,25 +9,40 @@ const ParkDetails = ({parks}) => {
             <div className="container">
             <nav aria-label="breadcrumb" style={{background: '#e9ecef'}}>
             
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><Link to='/'>Home</Link></li>
-                    <li class="breadcrumb-item active" aria-current="page">Park Details</li>
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><Link to='/'>Home</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">Park Details</li>
                 </ol>
                 
             </nav>
         </div>
         <div className="container">
             <div className="row">
-                <div className="col-12">
                     {parks.data.map((park) => {
                         if ( park.id === id) {
                             return ( 
                                 <>
+                                <div className="row">
+                                <div className="col-12">
                                     <div key={park.id}>
-                                        <h1>{park.name}</h1>  
+                                        <h1>{park.name}</h1>
+                                        <p>{park.addresses[0].line1},<br/> {park.addresses[0].city}, {park.addresses[0].stateCode} {park.addresses[0].postalCode}</p>
                                         <p>{park.description}</p>
-                                        
+                                        <h4><strong>Entrance Fee</strong></h4>
+
+                                        {park.entranceFees.map((fee) => {
+                                            if(fee.cost === '0.00') {
+                                                return <p>Free</p>;
+                                            } else {
+                                                return (
+                                                    <p><strong>${fee.cost}</strong>: {fee.description} </p>
+                                                    );
+                                            }
+                                        })}
+                                        </div>
                                     </div>
+                                    <div className="row">
+                                        <div className="col-12">
                                     {/* Button trigger modal */}
                                     <button type="button" className="btn btn-secondary" data-toggle="modal" data-target={`#activityModal${park.id}`}>
                                         See Activities
@@ -60,16 +75,36 @@ const ParkDetails = ({parks}) => {
                                         </div>
                                         </div>
                                     </div>
+                                </div>
+                                </div>
+                                    <div className="row">
+                                        
+                                        {park.images.map((img) => {
+                                            return (
+                                                <>
+                                                <div className="col-6">
+                                                <figure className="figure">
+                                                    
+                                                        <img style={{maxHeight: '300px'}}className="figure-img img-thumbnail rounded" src={img.url} alt={img.altText} />
+                                                    
+                                                    
+                                                        <figcaption className="figure-caption">{img.caption}</figcaption>
+                                                    
+                                                </figure>
+                                                </div>
+                                                
+                                                </>
+                                            )
+                                        })}
+                                        
+                                    </div>
+                                    
+                                </div>
                                 </>
-                            )
-                        } else {
-                            return (
-                                <h3>No Park Data</h3>
                             )
                         }
                         
                     })}
-                </div>
             </div>
         </div>
         </div>
