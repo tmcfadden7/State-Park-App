@@ -12,6 +12,7 @@ import axios from "axios";
 import './App.css';
 import bgImg1 from './images/Ohio-Hocking-Hills-state-park.jpeg'
 import bgImg2 from './images/Chugach-State-Park.jpg'
+import NationalPark from "./components/NationalPark";
 
 
 
@@ -58,6 +59,7 @@ function App() {
               <Route exact path='/' element={
                 <>
                   <JumboTron bgImg={bgImg1}/>
+                  <NationalPark />
                   <Search parkQuery={(q) => setParkQuery(q)} />
                   <StateParksGrid parks={parks} />
                   <JumboTron bgImg={bgImg2}/>

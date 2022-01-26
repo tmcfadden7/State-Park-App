@@ -27,7 +27,7 @@ const Articles = ({articles}) => {
                             </button>
                         </div>
                         <div class="modal-body">
-                        <iframe src={article.url} width="100%" height="400vh" title={article.id}></iframe>
+                        <iframe src={article.url} width="100%" height="400vh" title={article.title}></iframe>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
