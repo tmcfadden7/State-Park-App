@@ -25,7 +25,9 @@ const Activities = ({ activities }) => {
                                 <ul className='list-group list-group-flush'>
                                 {activity.parks.map((todo) => {
                                     return (
-                                        <li key={todo.parkCode} className='activity list-group-item'>{todo.fullName}, {todo.states}</li>
+                                        <li key={todo.parkCode} className='activity list-group-item'>
+                                            {todo.fullName}, {todo.states}
+                                        </li>
                                     )
                                 })}
                                 </ul>
