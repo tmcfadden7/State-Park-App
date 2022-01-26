@@ -7,8 +7,8 @@ const Articles = ({articles}) => {
           {articles.data.map((article) => {
               return (
                 <div key={article.id} className='col-sm-4'>
-                    <h4>{article.title}</h4>
                     <img className='img-thumbnail' src={article.listingImage.url} alt={article.listingImage.altText} />
+                    <h4 className='h4 mt-3'>{article.title}</h4>
                     <p>{article.listingDescription}</p>
                     
                     {/* <!-- Button trigger modal --> */}

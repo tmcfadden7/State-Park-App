@@ -11,7 +11,7 @@ const Search = ({parkQuery}) => {
     return (
         <section id='parks'>
             <div className='container pt-5'>
-                <h2 className="text-center">Search by Park</h2>
+                <h3 className="h3 text-center">Search by Park</h3>
                 <input className="form-control" type="text" placeholder="Search" 
                 onChange={(e) => onChange(e.target.value)} value={text}/>
             </div>
