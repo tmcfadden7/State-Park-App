@@ -38,7 +38,7 @@ function App() {
   }, [parkQuery]);
 
   useEffect(() => {
-    const articlesUrl = `https://developer.nps.gov/api/v1/articles?limit=50&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
+    const articlesUrl = `https://developer.nps.gov/api/v1/articles?limit=3&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
 
     axios.get(articlesUrl).then((response) => {
       setArticles(response.data)
