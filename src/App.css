@@ -6,9 +6,9 @@ body {
   background-color: #E39A37 !important;
 }
 
-.jumbo-1 {
-  background-image: url('/src/images/Ohio-Hocking-Hills-state-park.jpeg');
-  min-height: 500px;
+.jumbo {
+  /* background-image: url('/src/images/Ohio-Hocking-Hills-state-park.jpeg'); */
+  min-height: 600px;
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;

@@ -7,12 +7,12 @@ const Articles = ({articles}) => {
           {articles.data.map((article) => {
               return (
                 <div key={article.id} className='col-sm-4'>
-                    <h3>{article.title}</h3>
+                    <h4>{article.title}</h4>
                     <img className='img-thumbnail' src={article.listingImage.url} alt={article.listingImage.altText} />
                     <p>{article.listingDescription}</p>
                     
                     {/* <!-- Button trigger modal --> */}
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#articleModal">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#articleModal">
                     Read full article
                     </button>
 

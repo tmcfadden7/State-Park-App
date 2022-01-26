@@ -10,6 +10,8 @@ import ActivitiesGrid from "./components/ActivitiesGrid";
 import Search from "./components/Search";
 import axios from "axios";
 import './App.css';
+import bgImg1 from './images/Ohio-Hocking-Hills-state-park.jpeg'
+import bgImg2 from './images/Chugach-State-Park.jpg'
 
 
 
@@ -45,8 +47,6 @@ function App() {
       // console.log('ARTICLES:', articles)
     })
   }, []);
-  // console.log('ARTICLES:', articles)
-  // console.log(parks);
   if (!parks) return null;
   if (!articles) return null;
   if (!activities) return null;
@@ -57,9 +57,10 @@ function App() {
             <Routes>
               <Route exact path='/' element={
                 <>
-                  <JumboTron parks={parks}/>
+                  <JumboTron bgImg={bgImg1}/>
                   <Search parkQuery={(q) => setParkQuery(q)} />
                   <StateParksGrid parks={parks} />
+                  <JumboTron bgImg={bgImg2}/>
                   <ArticlesGrid articles={articles}/>
                   <Carousel parks={parks} />
                   <ActivitiesGrid activities={activities} />

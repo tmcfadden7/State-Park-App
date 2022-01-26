@@ -1,8 +1,9 @@
-const JumboTron = ({ parks }) => { 
+
+const JumboTron = ({bgImg}) => { 
     return (
         <>
-            <div className="jumbo-1">
-                
+            <div className="jumbo" style={{backgroundImage: `url(${bgImg})`}}>
+
             </div>         
         </>
     )
