@@ -6,16 +6,16 @@ const ParkDetails = ({parks}) => {
     // console.log(id);
     return (
         <div>
-            <div className="container">
-            <nav aria-label="breadcrumb" style={{background: '#e9ecef'}}>
             
-                <ol className="breadcrumb">
+            <nav aria-label="breadcrumb" style={{background: '#e9ecef'}}>
+            <div className="container px-0">
+                <ol className="breadcrumb px-0">
                     <li className="breadcrumb-item"><Link to='/'>Home</Link></li>
                     <li className="breadcrumb-item active" aria-current="page">Park Details</li>
                 </ol>
-                
+                </div>
             </nav>
-        </div>
+        
         <div className="container">
             <div className="row">
                     {parks.data.map((park) => {
@@ -27,7 +27,11 @@ const ParkDetails = ({parks}) => {
                                     <div key={park.id}>
                                         <h1>{park.name}</h1>
                                         <p>{park.addresses[0].line1},<br/> {park.addresses[0].city}, {park.addresses[0].stateCode} {park.addresses[0].postalCode}</p>
-                                        <p>{park.description}</p>
+                                        <p>{park.description}...<a href="#" data-toggle="modal" data-target={`#activityModal${park.id}`}><strong>See Activities</strong></a></p>
+                                        {/* Button trigger modal */}
+                                        {/* <button type="button" className="btn btn-secondary btn-sm" data-toggle="modal" data-target={`#activityModal${park.id}`}>
+                                        See Activities
+                                    </button> */}
                                         <h4><strong>Entrance Fee</strong></h4>
 
                                         {park.entranceFees.map((fee) => {
@@ -43,10 +47,7 @@ const ParkDetails = ({parks}) => {
                                     </div>
                                     <div className="row">
                                         <div className="col-12">
-                                    {/* Button trigger modal */}
-                                    <button type="button" className="btn btn-secondary" data-toggle="modal" data-target={`#activityModal${park.id}`}>
-                                        See Activities
-                                    </button>
+                                    
 
                                     {/* Modal */}
                                     <div className="modal fade" id={`activityModal${park.id}`} tabIndex="-1" aria-hidden="true">
@@ -84,12 +85,8 @@ const ParkDetails = ({parks}) => {
                                                 <>
                                                 <div className="col-6">
                                                 <figure className="figure">
-                                                    
-                                                        <img style={{maxHeight: '300px'}}className="figure-img img-thumbnail rounded" src={img.url} alt={img.altText} />
-                                                    
-                                                    
-                                                        <figcaption className="figure-caption">{img.caption}</figcaption>
-                                                    
+                                                    <img style={{maxHeight: '300px'}}className="figure-img img-thumbnail rounded" src={img.url} alt={img.altText} />
+                                                    <figcaption className="figure-caption">{img.caption}</figcaption>
                                                 </figure>
                                                 </div>
                                                 
