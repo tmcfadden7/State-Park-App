@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Articles = ({articles}) => {
-    console.log('FROM ARTICLES:', articles)
+    // console.log('FROM ARTICLES:', articles)
   return (
       <>
           {articles.data.map((article) => {

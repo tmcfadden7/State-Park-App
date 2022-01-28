@@ -1,6 +1,6 @@
 
 const Activities = ({ activities }) => {
-    console.log('this is it: ', activities.data)
+    // console.log('this is it: ', activities.data)
     return (
         <>
             {activities.data.map((activity => {
