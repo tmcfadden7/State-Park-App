@@ -6,7 +6,7 @@ const Articles = ({articles}) => {
       <>
           {articles.data.map((article) => {
               return (
-                <div key={article.id} className='col-sm-4'>
+                <div key={article.id} className='col-sm-4 mb-3'>
                     <img className='img-thumbnail' src={article.listingImage.url} alt={article.listingImage.altText} />
                     <h4 className='h4 mt-3'>{article.title}</h4>
                     <p>{article.listingDescription}</p>

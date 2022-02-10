@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -15,21 +19,16 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-
-  /* background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 0;
-  width: 100%;
-  min-height: 700px; */
 }
 
 .activity {
   font-size: 12px;
 }
+
 .carosel-max-height {
   max-height: 600px;
 }
+
 .custom-caption {
   padding: 10px;
   bottom: auto;

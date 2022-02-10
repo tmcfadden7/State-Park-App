@@ -37,7 +37,7 @@ function App() {
 
     axios.get(baseURL).then((response) => {
 
-      // console.log('yellow data:', response.data)
+      console.log('fullname data:', response.data.data[1].fullName)
      
       setParks(response.data);
     });
