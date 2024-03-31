@@ -1,12 +1,12 @@
-import StateParks from './StateParks';
+import Tours from './Tours';
 
-const StateParksGrid = ({ parks }) => {
+const ToursGrid = ({ tours }) => {
 	return (
 		<>
 			<section id='state-park-grid'>
 				<div className='container pt-3'>
 					<div className='row justify-content-between'>
-						<StateParks parks={parks} />
+						<Tours tours={tours} />
 					</div>
 				</div>
 			</section>
@@ -14,4 +14,4 @@ const StateParksGrid = ({ parks }) => {
 	);
 };
 
-export default StateParksGrid;
+export default ToursGrid;

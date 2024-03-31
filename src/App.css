@@ -1,37 +1,113 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f7f7f9;
 }
 
-.navbar {
-  background-color: #E39A37 !important;
+.navbar,
+#footer {
+	background-color: #e39a37 !important;
 }
 
 .jumbo {
-  /* background-image: url('/src/images/Ohio-Hocking-Hills-state-park.jpeg'); */
-  min-height: 600px;
+	min-height: 600px;
 
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .activity {
-  font-size: 12px;
+	font-size: 12px;
 }
 
 .carosel-max-height {
-  max-height: 600px;
+	max-height: 600px;
 }
 
 .custom-caption {
-  padding: 10px;
-  bottom: auto;
-  top: 20px;
-  background: rgba(00, 00, 00, 0.3);
+	padding: 10px;
+	bottom: auto;
+	top: 20px;
+	background: rgba(00, 00, 00, 0.3);
+}
+
+#about-section,
+#search-parks,
+#state-park-grid,
+#action-button {
+	background-color: #f7f7f9;
+}
+
+.info-section {
+	background-color: #f7f7f9;
+}
+.activities-section .accordion-button:hover {
+	background-color: #e39a37;
+}
+.activity-btn {
+	cursor: pointer;
+	background-color: #f7f7f9;
+	color: #6c757d;
+	border-color: #6c757d;
+}
+
+.activity-btn:hover {
+	background-color: #6c757d;
+	color: #f7f7f9;
+}
+
+.activity-park-name {
+	color: #000;
+	text-decoration: none;
+}
+
+.activity-park-name:hover {
+	color: #e39a37;
+	text-decoration: underline;
+}
+
+.park-details-carousel-img {
+	height: 575px;
+}
+@media screen and (max-width: 678px) {
+	.park-details-carousel-img {
+		height: 400px;
+	}
+}
+
+.park-card a {
+	color: #000000;
+	text-decoration: none;
+	display: inline-block;
+}
+.park-card a::after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 2px; /* Height of the line */
+	bottom: -5px; /* Distance from the bottom of the element */
+	left: 0;
+	background-color: #3b3b3b; /* Color of the line */
+	transition: width 0.8s ease; /* Transition effect */
+}
+.park-card a:hover {
+	color: #ffffff;
+	background-color: #e39a37;
+}
+.park-card a:hover::after {
+	width: 100%; /* Full width on hover */
 }

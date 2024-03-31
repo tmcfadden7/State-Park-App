@@ -1,12 +1,9 @@
+const JumboTron = ({ bgImg }) => {
+	return (
+		<>
+			<div className='jumbo' style={{ backgroundImage: `url(${bgImg})` }}></div>
+		</>
+	);
+};
 
-const JumboTron = ({bgImg}) => { 
-    return (
-        <>
-            <div className="jumbo" style={{backgroundImage: `url(${bgImg})`}}>
-
-            </div>         
-        </>
-    )
-}
-
-export default JumboTron
+export default JumboTron;
