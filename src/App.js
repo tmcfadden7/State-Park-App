@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import ParkDetails from './components/ParkDetails';
+import ParkDetails from './components/ParkDetails/index';
 import JumboTron from './components/JumboTron';
 import ArticlesGrid from './components/ArticlesGrid';
 import Carousel from './components/Carousel';
@@ -15,53 +15,58 @@ import bgImg1 from './images/Ohio-Hocking-Hills-state-park.jpeg';
 import bgImg2 from './images/Chugach-State-Park.jpg';
 import NationalPark from './components/NationalPark';
 import Footer from './components/Footer';
+import useFetch from './hooks/useFetch';
+import ToursGrid from './components/ToursGrid';
 
 function App() {
-	const [parks, setParks] = useState(null);
 	const [parkQuery, setParkQuery] = useState('a');
+	const [tourQuery, setTourQuery] = useState('a');
 	const [articles, setArticles] = useState('');
-	const [activities, setActivities] = useState('');
 	const [parkOffset, setParkOffset] = useState(0);
+	const [tourOffset, setTourOffset] = useState(0);
 	const [articleOffset, setArticleOffset] = useState(0);
+	const [isParksTabActive, setIsParksTabActive] = useState(true);
+	const [isActivitiesTabActive, setIsActivitiesTabActive] = useState(false);
+	const [isToursTabActive, setIsToursTabActive] = useState(false);
 
-	useEffect(() => {
-		const activityUrl = `https://developer.nps.gov/api/v1/activities/parks?limit=50&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
+	const {
+		data: activitiesData,
+		isLoading: activitiesIsLoading,
+		isError: activitiesIsError,
+	} = useFetch('https://developer.nps.gov/api/v1/activities/parks?limit=50');
 
-		axios.get(activityUrl).then((response) => {
-			setActivities(response.data);
-		});
-	}, []);
-	// console.log(activities.data);
+	const {
+		data: parksData,
+		isLoading: parksIsLoading,
+		isError: parksIsError,
+	} = useFetch(
+		`https://developer.nps.gov/api/v1/parks?q=${parkQuery}&start=${parkOffset}&limit=4`,
+		isParksTabActive
+	);
 
-	useEffect(() => {
-		const baseURL = `https://developer.nps.gov/api/v1/parks?q=${parkQuery}&limit=3&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
+	const {
+		data: toursData,
+		isLoading: toursIsLoading,
+		isError: toursIsError,
+	} = useFetch(
+		`https://developer.nps.gov/api/v1/tours?q=${tourQuery}&start=${tourOffset}&limit=4`
+	);
 
-		axios.get(baseURL).then((response) => {
-			console.log('fullname data:', response.data.data[1].fullName);
+	console.log('TROURSS ', toursData);
 
-			setParks(response.data);
-		});
-	}, [parkQuery]);
+	// useEffect(() => {
+	// 	const articlesUrl = `https://developer.nps.gov/api/v1/articles?start=${articleOffset}&limit=3&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
 
-	useEffect(() => {
-		const offsetURL = `https://developer.nps.gov/api/v1/parks?start=${parkOffset}&limit=3&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
+	// 	axios.get(articlesUrl).then((response) => {
+	// 		setArticles(response.data);
+	// 		// console.log('ARTICLES:', articles)
+	// 	});
+	// }, [articleOffset]);
 
-		axios.get(offsetURL).then((response) => {
-			setParks(response.data);
-		});
-	}, [parkOffset]);
-
-	useEffect(() => {
-		const articlesUrl = `https://developer.nps.gov/api/v1/articles?start=${articleOffset}&limit=3&api_key=vm54maVmJeHyMNy0mUND5YYsKDmg8uFn9gqelknN`;
-
-		axios.get(articlesUrl).then((response) => {
-			setArticles(response.data);
-			// console.log('ARTICLES:', articles)
-		});
-	}, [articleOffset]);
-	if (!parks) return null;
-	if (!articles) return null;
-	if (!activities) return null;
+	if (!parksData) return null;
+	// if (!articles) return null;
+	if (!activitiesData) return null;
+	if (!toursData) return null;
 	return (
 		<>
 			<Router>
@@ -73,21 +78,44 @@ function App() {
 						element={
 							<>
 								<JumboTron bgImg={bgImg1} />
-								<NationalPark />
-								<Search parkQuery={(q) => setParkQuery(q)} />
-								<StateParksGrid parks={parks} />
-								<Button offset={parkOffset} setOffset={setParkOffset} />
+								<div className='info-section'>
+									<NationalPark />
+									<Search
+										setParkQuery={setParkQuery}
+										setTourQuery={setTourQuery}
+										setIsParksTabActive={setIsParksTabActive}
+										setIsActivitiesTabActive={setIsActivitiesTabActive}
+										setIsToursTabActive={setIsToursTabActive}
+									/>
+									{isParksTabActive && (
+										<>
+											<StateParksGrid parks={parksData?.data} />
+											<Button offset={parkOffset} setOffset={setParkOffset} />
+										</>
+									)}
+									{isActivitiesTabActive && (
+										<ActivitiesGrid activities={activitiesData} />
+									)}
+									{isToursTabActive && (
+										<>
+											<ToursGrid tours={toursData?.data} />
+											<Button offset={tourOffset} setOffset={setTourOffset} />
+										</>
+									)}
+								</div>
 								<JumboTron bgImg={bgImg2} />
-								<ArticlesGrid articles={articles} />
-								<Button offset={articleOffset} setOffset={setArticleOffset} />
-								<Carousel parks={parks} />
-								<ActivitiesGrid activities={activities} />
-								<Footer />
+								<div className='info-section'>
+									{/* <ArticlesGrid articles={articles} />
+									<Button offset={articleOffset} setOffset={setArticleOffset} /> */}
+									<Carousel parks={parksData?.data} />
+									{/* <ActivitiesGrid activities={activities} /> */}
+								</div>
 							</>
 						}
 					/>
-					<Route path='/:id' element={<ParkDetails parks={parks} />} />
+					<Route path='park-details/:parkCode' element={<ParkDetails />} />
 				</Routes>
+				<Footer />
 			</Router>
 		</>
 	);

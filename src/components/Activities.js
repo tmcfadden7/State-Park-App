@@ -1,49 +1,71 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Activities = ({ activities }) => {
-    // console.log('this is it: ', activities.data)
-    return (
-        <>
-            {activities.data.map((activity => {
-                return (
-                    <>
-                    <div className="col-4 my-2" key={activity.id}>
-                        <button type="button" className="btn btn-outline-secondary rounded-pill" data-toggle="modal" data-target={`#modalActivity${activity.id}`}>
-                            {activity.name}
-                        </button>
-                    
-                        {/* MODAL */}
-                        <div className="modal fade" id={`modalActivity${activity.id}`} tabIndex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
-                            <div className="modal-dialog">
-                                <div className="modal-content">
-                                <div className="modal-header sticky-top bg-light">
-                                    <h5 className="modal-title" id="exampleModalLabel">{activity.name}</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                <ul className='list-group list-group-flush'>
-                                {activity.parks.map((todo) => {
-                                    return (
-                                        <li key={todo.parkCode} className='activity list-group-item'>
-                                            {todo.fullName}, {todo.states}
-                                        </li>
-                                    )
-                                })}
-                                </ul>
-                                </div> 
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  </>
-                )
-            }))}
-        </>
-    )
-}
+	const [openId, setOpenId] = useState(null);
 
-export default Activities
+	const toggleAccordion = (id) => {
+		setOpenId(id === openId ? null : id);
+	};
+
+	return (
+		<>
+			<div className='accordion row' id={`accordionExample`}>
+				{activities.data.map((activity, index) => {
+					return (
+						<div
+							className='col-sm-4 my-2 align-self-start activities-section'
+							key={activity.id + activity.name + index}
+						>
+							<div className='accordion-item' key={activity.id}>
+								<h2 className='accordion-header' id={`heading${activity.id}`}>
+									<button
+										className='accordion-button btn w-100 p-3 fs-5 text-dark fw-bolder text-center'
+										style={{ backgroundColor: '#d3d3d3' }}
+										type='button'
+										onClick={() => toggleAccordion(activity.id)}
+										data-bs-toggle={`collapse`}
+										data-bs-target={`#collapse${activity.id}`}
+										aria-expanded={activity.id === openId}
+										aria-controls={`collapse${activity.id}`}
+									>
+										{activity.name}
+									</button>
+								</h2>
+								<div
+									id={`collapse${activity.id}`}
+									className={`accordion-collapse collapse ${
+										activity.id === openId ? 'show' : ''
+									}`}
+									aria-labelledby={`heading${activity.id}`}
+									data-bs-parent={`#accordionExample`}
+								>
+									<div
+										className='accordion-body p-0'
+										style={{ height: '300px', overflowY: 'scroll' }}
+									>
+										{activity.parks.map((todo, index) => {
+											return (
+												<Link
+													className='activity-park-name'
+													key={index + todo.parkCode}
+													to={`/park-details/${todo.parkCode}`}
+												>
+													<p className='p-3 mb-0 border-bottom'>
+														{todo.fullName}, {todo.states.replaceAll(',', ', ')}
+													</p>
+												</Link>
+											);
+										})}
+									</div>
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		</>
+	);
+};
+
+export default Activities;

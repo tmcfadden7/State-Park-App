@@ -29,7 +29,7 @@ const NavBar = () => {
 						<ul className='navbar-nav'>
 							<li className='nav-item'>
 								<a className='nav-link' href='/#parks'>
-									Parks <span className='sr-only'>(current)</span>
+									Parks
 								</a>
 							</li>
 							<li className='nav-item'>

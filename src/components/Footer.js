@@ -1,11 +1,19 @@
 function Footer() {
 	return (
 		<>
-			<div className='container'>
-				<div className='row'>
-					<div className='col'>Test 123</div>
+			<section id='footer'>
+				<hr />
+				<div className='container'>
+					<div className='d-flex justify-content-center'>
+						<div>
+							<h1 className='h3 text-center'>State Parks</h1>
+							<p className='text-center lead'>
+								Copyright {new Date().getFullYear()}
+							</p>
+						</div>
+					</div>
 				</div>
-			</div>
+			</section>
 		</>
 	);
 }
