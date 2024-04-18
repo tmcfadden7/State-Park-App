@@ -32,7 +32,7 @@ const Search = ({
 					>
 						<a
 							className='nav-link text-dark active'
-							id='tab1'
+							id='search-by-parks'
 							data-bs-toggle='tab'
 							href='#search-by-parks'
 							onClick={() => {
@@ -50,9 +50,9 @@ const Search = ({
 					>
 						<a
 							className='nav-link text-dark'
-							id='tab2'
+							id='search-by-activities'
 							data-bs-toggle='tab'
-							href='#content2'
+							href='#search-by-activities'
 							onClick={() => {
 								setIsParksTabActive(false);
 								setIsActivitiesTabActive(true);
@@ -68,9 +68,9 @@ const Search = ({
 					>
 						<a
 							className='nav-link text-dark'
-							id='tab3'
+							id='search-by-tours'
 							data-bs-toggle='tab'
-							href='#content3'
+							href='#search-by-tours'
 							onClick={() => {
 								setIsParksTabActive(false);
 								setIsActivitiesTabActive(false);

@@ -1,4 +1,5 @@
 import React from 'react';
+import searchIcon from '../assets/search-icon-30.png';
 
 const NavBar = () => {
 	return (
@@ -8,41 +9,13 @@ const NavBar = () => {
 				id='home'
 			>
 				<div className='container'>
-					<button
-						className='navbar-toggler'
-						type='button'
-						data-toggle='collapse'
-						data-target='#navbarSupportedContent'
-						aria-controls='navbarSupportedContent'
-						aria-expanded='false'
-						aria-label='Toggle navigation'
-					>
-						<span className='navbar-toggler-icon'></span>
-					</button>
-					<div
-						className='collapse navbar-collapse justify-content-center'
-						id='navbarSupportedContent'
-					>
+					<div className='d-flex w-100 justify-content-between align-items-center'>
 						<a className='navbar-brand' href='/'>
 							State Parks
 						</a>
-						<ul className='navbar-nav'>
-							<li className='nav-item'>
-								<a className='nav-link' href='/#parks'>
-									Parks
-								</a>
-							</li>
-							<li className='nav-item'>
-								<a className='nav-link' href='/#activity'>
-									Activities
-								</a>
-							</li>
-							<li className='nav-item'>
-								<a className='nav-link' href='/#articles'>
-									Articles
-								</a>
-							</li>
-						</ul>
+						<a href='/#search-parks'>
+							<img src={searchIcon} alt='search icon' />
+						</a>
 					</div>
 				</div>
 			</nav>
